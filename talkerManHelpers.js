@@ -49,8 +49,6 @@ async function validationToken(req, res, next) {
   if (!authorization) {
     return res.status(401).json({ message: 'Token não encontrado' });
   }
-  // const saveToken = JSON.parse(await fs.readFile('./generateToken.json', 'utf8'));
-  // const findToken = saveToken.find((id) => id.token === authorization);
   if (authorization.length !== 16) {
     return res.status(401).json({ message: 'Token inválido' });
   }
