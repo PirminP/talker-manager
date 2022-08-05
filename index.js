@@ -91,6 +91,14 @@ app.put(
   },
 );
 
+app.delete('/talker/:id', validationToken, async (req, res) => {
+  const { id } = req.params;
+  const talkers = await getTalkers();
+  const newTalkers = talkers.filter((talker) => talker.id !== Number(id));
+  res.status(204).json();
+  fs.writeFile('./talker.json', JSON.stringify(newTalkers, null, 2));
+});
+
 app.listen(PORT, () => {
   console.log('Online');
 });
