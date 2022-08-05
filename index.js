@@ -1,7 +1,17 @@
 const express = require('express');
 const fs = require('fs/promises');
 const bodyParser = require('body-parser');
-const { validationEmail, validationPassword, generationToken } = require('./talkerManHelpers');
+const { 
+  getTalkers,
+  validationEmail,
+  validationPassword,
+  generationToken,
+  validationToken,
+  validationName,
+  validationAge,
+  validationTalk,
+  validationWatchedAtAndRate,
+} = require('./talkerManHelpers');
 
 const app = express();
 app.use(bodyParser.json());
@@ -13,11 +23,6 @@ const PORT = '3000';
 app.get('/', (_request, response) => {
   response.status(HTTP_OK_STATUS).send();
 });
-
-async function getTalkers() {
-  const talkers = JSON.parse(await fs.readFile('./talker.json', 'utf8'));
-  return talkers;
-}
 
 app.get('/talker', async (req, res) => {
   try {
@@ -39,9 +44,30 @@ app.get('/talker/:id', async (req, res) => {
   return res.status(200).json(findTalkerId);
 });
 
-app.post('/login', validationEmail, validationPassword, (req, res) => {
-  res.status(200).json(generationToken());
+app.post('/login', validationEmail, validationPassword, async (req, res) => {
+  const generateToken = generationToken();
+  res.status(200).json(generateToken);
+  const saveToken = JSON.parse(await fs.readFile('./generateToken.json', 'utf8'));
+  saveToken.push(generateToken);
+  fs.writeFile('./generateToken.json', JSON.stringify(saveToken));
 });
+
+app.post(
+  '/talker',
+  validationToken,
+  validationName,
+  validationAge,
+  validationTalk,
+  validationWatchedAtAndRate,
+  async (req, res) => {
+    const { name, age, talk } = req.body;
+    const talkers = await getTalkers();
+    const newTalker = { name, age, id: talkers.length + 1, talk };
+    res.status(201).send(newTalker);
+    talkers.push(newTalker);
+    fs.writeFile('./talker.json', JSON.stringify(talkers, null, 2));
+  },
+);
 
 app.listen(PORT, () => {
   console.log('Online');
