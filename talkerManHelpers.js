@@ -88,31 +88,35 @@ function validationAge(req, res, next) {
 function validationTalk(req, res, next) {
   const { talk } = req.body;
   if (!talk) {
-    return res.status(400).json({
-      message: 'O campo "talk" é obrigatório',
-    });
+    return res.status(400).json({ message: 'O campo "talk" é obrigatório' });
+  }
+  if (talk.rate === 0) {
+    return res.status(400).json({ message: 'O campo "rate" deve ser um inteiro de 1 à 5' });
   }
   if (!talk.watchedAt) {
-    return res.status(400).json({
-      message: 'O campo "watchedAt" é obrigatório',
-    });
+    return res.status(400).json({ message: 'O campo "watchedAt" é obrigatório' });
   }
   if (!talk.rate) {
-    return res.status(400).json({
-      message: 'O campo "rate" é obrigatório',
-    });
+    return res.status(400).json({ message: 'O campo "rate" é obrigatório' });
   }
   next();
 }
 
-function validationWatchedAtAndRate(req, res, next) {
+function validationWatchedAt(req, res, next) {
   const { talk } = req.body;
   if (!validDateInput(talk.watchedAt)) {
     return res.status(400).json({
       message: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"',
     });
   }
+  next();
+}
 
+function validationRate(req, res, next) {
+  const { talk } = req.body;
+  if (!talk.rate) {
+    return res.status(400).json({ message: 'O campo "rate" é obrigatório' });
+  }
   if (!Number.isInteger(talk.rate) || talk.rate < 1 || talk.rate > 5) {
     return res.status(400).json({
       message: 'O campo "rate" deve ser um inteiro de 1 à 5',
@@ -124,11 +128,12 @@ function validationWatchedAtAndRate(req, res, next) {
 module.exports = {
   getTalkers, 
   validationEmail, 
-  validationPassword, 
+  validationPassword,
   generationToken, 
   validationToken,
   validationName,
   validationAge,
   validationTalk,
-  validationWatchedAtAndRate,
+  validationWatchedAt,
+  validationRate,
 };

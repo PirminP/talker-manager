@@ -10,7 +10,8 @@ const {
   validationName,
   validationAge,
   validationTalk,
-  validationWatchedAtAndRate,
+  validationWatchedAt,
+  validationRate,
 } = require('./talkerManHelpers');
 
 const app = express();
@@ -55,7 +56,8 @@ app.post(
   validationName,
   validationAge,
   validationTalk,
-  validationWatchedAtAndRate,
+  validationWatchedAt,
+  validationRate,
   async (req, res) => {
     const { name, age, talk } = req.body;
     const talkers = await getTalkers();
@@ -63,6 +65,29 @@ app.post(
     res.status(201).send(newTalker);
     talkers.push(newTalker);
     fs.writeFile('./talker.json', JSON.stringify(talkers, null, 2));
+  },
+);
+
+app.put(
+  '/talker/:id',
+  validationToken,
+  validationName,
+  validationAge,
+  validationTalk,
+  validationWatchedAt,
+  validationRate,
+  async (req, res) => {
+    const { name, age, talk } = req.body;
+    const { id } = req.params;
+    const talkers = await getTalkers();
+    const talkerEdited = talkers.map((talker) => {
+      if (talker.id === Number(id)) {
+        return { name, age, id: Number(id), talk };
+      }
+      return talkers;
+    });
+    fs.writeFile('./talker.json', JSON.stringify(talkerEdited, null, 2));
+    return res.status(200).json({ name, age, id: Number(id), talk });
   },
 );
 
