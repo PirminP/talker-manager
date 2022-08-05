@@ -49,9 +49,9 @@ async function validationToken(req, res, next) {
   if (!authorization) {
     return res.status(401).json({ message: 'Token não encontrado' });
   }
-  const saveToken = JSON.parse(await fs.readFile('./generateToken.json', 'utf8'));
-  const findToken = saveToken.find((id) => id.token === authorization);
-  if (!findToken) {
+  // const saveToken = JSON.parse(await fs.readFile('./generateToken.json', 'utf8'));
+  // const findToken = saveToken.find((id) => id.token === authorization);
+  if (authorization.length !== 16) {
     return res.status(401).json({ message: 'Token inválido' });
   }
   next();
@@ -114,6 +114,7 @@ function validationWatchedAtAndRate(req, res, next) {
       message: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"',
     });
   }
+
   if (!Number.isInteger(talk.rate) || talk.rate < 1 || talk.rate > 5) {
     return res.status(400).json({
       message: 'O campo "rate" deve ser um inteiro de 1 à 5',

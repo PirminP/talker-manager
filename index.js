@@ -47,9 +47,9 @@ app.get('/talker/:id', async (req, res) => {
 app.post('/login', validationEmail, validationPassword, async (req, res) => {
   const generateToken = generationToken();
   res.status(200).json(generateToken);
-  const saveToken = JSON.parse(await fs.readFile('./generateToken.json', 'utf8'));
-  saveToken.push(generateToken);
-  fs.writeFile('./generateToken.json', JSON.stringify(saveToken));
+  // const saveToken = JSON.parse(await fs.readFile('./generateToken.json', 'utf8'));
+  // saveToken.push(generateToken);
+  // fs.writeFile('./generateToken.json', JSON.stringify(saveToken, null, 2));
 });
 
 app.post(
