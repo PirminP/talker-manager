@@ -1,10 +1,32 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# Project Talker manager
+
+#### ...
+
+* Designed by ...
+* Applying ...
+
+### Instructions
+* To run the repository locally, clone the project and use the following commands to initialize Docker:
+  
+  ```
+  docker-compose up -d // start application with docker
+  docker attach talker_manager
+  npm install // install dependencies
+  docker-compose down // stop application
+  ```
+
+### Tasks
+
+  | Task     | Description |
+  | ----------- | ----------- |
+  | 1   |  |
+  | 2   |  |
+  | 3   |  |
+  | 4   |  |
+  | 5   |  |
+  | 6   |  |
+  | 7   |  |
+  | 8   |  |
+  | 9   | - |
+  | 10  | - |
+  | 11  | - |
