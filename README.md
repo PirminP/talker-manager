@@ -25,7 +25,7 @@ Use the following command to run the application:
 
   | Method     | Functionality | URL |
   | ----------- | ----------- | ----------- |
-  | `POST`   | ...  | http://localhost:3000/login |
+  | `POST`   |  Login user and returns token | http://localhost:3000/login |
 
 #### Talker
 
