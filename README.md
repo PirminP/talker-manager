@@ -41,10 +41,10 @@ The following JSON is to be entered in the request:
   | ----------- | ----------- | ----------- |
   | `GET`   | Returns data of all talkers, if any exist | http://localhost:3000/talker |
   | `GET`   | Returns data of a specific talker, if any  exist| http://localhost:3000/talker/:id |
-  | `POST`   |  |  |
-  | 4   |  |  |
+  | `GET`   |  |  |
+  | `PUT`   |  |  |
   | `POST`   | Create a new talker | http://localhost:3000/talker |
-  | 6   |  |  |
+  | `DELTE`   |  |  |
 
 The following JSON is to be entered in the request PUT & POST:
   ```
