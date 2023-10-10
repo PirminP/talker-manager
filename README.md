@@ -45,3 +45,15 @@ The following JSON is to be entered in the request:
   | 4   |  |  |
   | 5   |  |  |
   | 6   |  |  |
+
+The following JSON is to be entered in the request PUT & POST:
+  ```
+  {
+  "name": "Palestrante",
+  "age": 30,
+  "talk": {
+    "watchedAt": "22/104/2022",
+    "rate": 6
+  }
+  }
+  ```
