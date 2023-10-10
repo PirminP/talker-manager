@@ -1,9 +1,9 @@
 # Project Talker manager
 
-#### ...
+#### This project consists of an API built for registering talkers, in order to register, view, search, edit and delete information.
 
-* Designed by ...
-* Applying ...
+* Developed using Node.js/nodemon, Express, MySQL & Docker
+* Application that obtains information using the `fs` module
 
 ### Instructions
 * To run the repository locally, clone the project and use the following commands to initialize Docker:
@@ -15,7 +15,13 @@
   docker-compose down // stop application
   ```
 
-### Tasks
+Use the following command to run the application:
+  ```
+  npm start or npm run dev
+  ```
+
+### Endpoints
+#### Login
 
   | Task     | Description |
   | ----------- | ----------- |
