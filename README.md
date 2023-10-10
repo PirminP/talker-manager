@@ -32,7 +32,7 @@ The following JSON is to be entered in the request:
   {
   "email": "email@email.com",
   "password": "123456"
-}
+  }
   ```
 
 #### Talker
