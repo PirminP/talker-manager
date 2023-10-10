@@ -31,8 +31,8 @@ Use the following command to run the application:
 
   | Method     | Functionality | URL |
   | ----------- | ----------- | ----------- |
-  | `GET`   | Returns data of all talkers, if registrated | http://localhost:3000/talker |
-  | 2   |  |  |
+  | `GET`   | Returns data of all talkers, if any exist | http://localhost:3000/talker |
+  | `GET`   | Returns data of a specific talker, if any  exist| http://localhost:3000/talker/:id |
   | 3   |  |  |
   | 4   |  |  |
   | 5   |  |  |
