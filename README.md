@@ -27,6 +27,14 @@ Use the following command to run the application:
   | ----------- | ----------- | ----------- |
   | `POST`   |  Login user and returns token with validation of password & email | http://localhost:3000/login |
 
+The following JSON is to be entered in the request:
+  ```
+  {
+  "email": "email@email.com",
+  "password": "123456"
+}
+  ```
+
 #### Talker
 
   | Method     | Functionality | URL |
