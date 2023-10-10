@@ -31,14 +31,9 @@ Use the following command to run the application:
 
   | Method     | Functionality | URL |
   | ----------- | ----------- | ----------- |
-  | 1   |  |  |
+  | `GET`   | Returns data of all talkers, if registrated | http://localhost:3000/talker |
   | 2   |  |  |
   | 3   |  |  |
   | 4   |  |  |
   | 5   |  |  |
   | 6   |  |  |
-  | 7   |  |  |
-  | 8   |  |  |
-  | 9   | - |  |
-  | 10  | - |  |
-  | 11  | - |  |
